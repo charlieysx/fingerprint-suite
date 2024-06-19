@@ -319,7 +319,10 @@ export async function newInjectedPage(
         fingerprint?: BrowserFingerprintWithHeaders;
         fingerprintOptions?: Partial<FingerprintGeneratorOptions>;
     },
-): Promise<Page> {
+): Promise<{
+    page: Page,
+    fingerprint: BrowserFingerprintWithHeaders
+}> {
     const generator = new FingerprintGenerator();
     const fingerprintWithHeaders = options?.fingerprint ?? generator.getFingerprint(options?.fingerprintOptions ?? {});
 
@@ -330,6 +333,6 @@ export async function newInjectedPage(
 
     return {
         page,
-        fingerprintWithHeaders
+        fingerprint: fingerprintWithHeaders
     };
 }
