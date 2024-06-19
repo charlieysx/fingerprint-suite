@@ -328,5 +328,8 @@ export async function newInjectedPage(
     const injector = new FingerprintInjector();
     await injector.attachFingerprintToPuppeteer(page, fingerprintWithHeaders);
 
-    return page;
+    return {
+        page,
+        fingerprintWithHeaders
+    };
 }

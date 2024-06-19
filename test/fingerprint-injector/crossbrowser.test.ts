@@ -50,7 +50,7 @@ describe('Puppeteer controlled instances', () => {
         async (browserType: typeof runnableBrowsers[number], fingerprintBrowser: typeof fingerprintBrowsers[number]) => {
             const browser = await puppeteer.launch({ product: browserType === 'chrome' ? undefined : browserType });
 
-            const page = await newInjectedPage(browser, {
+            const {page} = await newInjectedPage(browser, {
                 fingerprintOptions: {
                     browsers: [fingerprintBrowser],
                 },
